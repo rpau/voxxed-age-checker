@@ -1,0 +1,11 @@
+---
+buildName: "voxxed-age-checker"
+links:
+  Git: "http://gogs/gogsadmin/voxxed-age-checker.git"
+  Job: "http://192.168.64.2:32270/job/voxxed-age-checker"
+  Staging: "http://10.0.0.66:80/kubernetes/pods?namespace=default-staging"
+  Testing: "http://10.0.0.66:80/kubernetes/pods?namespace=default-testing"
+environments:
+  Testing: "default-testing"
+  Staging: "default-staging"
+useLocalFlow: true
