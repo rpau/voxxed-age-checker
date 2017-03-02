@@ -9,6 +9,18 @@
     <finalName>voxxed-age-checker</finalName>
     <plugins>
       <plugin>
+        <groupId>org.walkmod.maven.plugins</groupId>
+        <artifactId>walkmod-maven-plugin</artifactId>
+        <version>1.0.3</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>patch</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <version>${version.wildfly-swarm}</version>
@@ -28,6 +40,9 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <version.wildfly-swarm>2016.12.0</version.wildfly-swarm>
+    <walkmod.chains>pmd</walkmod.chains>
+    <walkmod.properties>configurationFile=ruleset.xml</walkmod.properties>
+
   </properties>
   <dependencies>
     <dependency>

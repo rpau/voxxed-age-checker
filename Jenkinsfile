@@ -35,6 +35,18 @@ mavenNode{
   echo 'NOTE: running pipelines for the first time will take longer as build and base docker images are pulled onto the node'
   container(name: 'maven') {
 
+    stage 'Fixing Release'
+    sh 'mvn walkmod:patch'
+    if (fileExists('walkmod.patch')) {
+      echo 'walkmod has produced a patch'
+      sh 'git apply walkmod.patch'
+      sh 'git commit -a --ammend -m "Fixing style violations"'
+      sh 'git push'
+      currentBuild.result = 'FAILURE'
+      error("Build failed by the lack of consistent coding style")
+
+    }
+    echo 'no pending quick fixes to apply'
     stage 'Build Release'
     mavenCanaryRelease {
       version = canaryVersion
